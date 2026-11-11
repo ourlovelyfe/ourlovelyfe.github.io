@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OurLoveLyfe App Testing - Be First Inside</title>
+<meta name="description" content="Join the OurLoveLyfe tester list for early access to the iPhone and Android apps. Free, private, and first in line." />
+<meta property="og:title" content="OurLoveLyfe App Testing" />
+<meta property="og:description" content="The OurLoveLyfe apps are almost ready. Testers get in before anyone else." />
+<meta property="og:image" content="https://ourlovelyfe.com/icon-512.png" />
+<link rel="icon" href="https://ourlovelyfe.com/icon-180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0c0a10;
+    --accent:#ff6688;
+    --accent-deep:#c21845;
+    --cream:#fbf4ec;
+    --muted:rgba(251,244,236,.66);
+    --faint:rgba(251,244,236,.45);
+    --glass:rgba(255,255,255,.045);
+    --glass-strong:rgba(255,255,255,.07);
+    --hairline:rgba(255,255,255,.09);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      radial-gradient(720px 420px at 50% -120px, rgba(255,102,136,.20), transparent 65%),
+      radial-gradient(560px 380px at 88% 22%, rgba(194,24,69,.12), transparent 60%),
+      radial-gradient(640px 480px at 8% 78%, rgba(255,102,136,.07), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 20px 72px}
+  header{padding:34px 0 8px;text-align:center}
+  .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream)}
+  .brand img{width:44px;height:44px;border-radius:12px}
+  .brand span{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;letter-spacing:.01em}
+  .hero{text-align:center;padding:38px 0 10px}
+  .eyebrow{
+    display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);border:1px solid rgba(255,102,136,.35);border-radius:9999px;padding:6px 14px;
+    background:rgba(255,102,136,.08);
+  }
+  h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(42px,8.5vw,60px);line-height:1.08;margin:22px 0 16px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{color:var(--muted);font-size:17px;max-width:520px;margin:0 auto}
+  section{margin-top:44px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;margin-bottom:6px}
+  .section-sub{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .cards{display:grid;gap:12px}
+  @media(min-width:620px){.cards.three{grid-template-columns:repeat(3,1fr)}.cards.two{grid-template-columns:1fr 1fr}}
+  .card{
+    background:var(--glass);border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+  .card h3{font-size:16px;font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .card p,.card li{color:var(--muted);font-size:14.5px}
+  .card ol{padding-left:19px;display:grid;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 12px rgba(255,102,136,.8)}
+  .status{
+    margin-top:15px;font-size:13px;color:var(--cream);
+    background:rgba(255,102,136,.09);border:1px solid rgba(255,102,136,.25);
+    border-radius:14px;padding:10px 13px;
+  }
+  .fineprint{color:var(--faint);font-size:13.5px;text-align:center;max-width:520px;margin:14px auto 0}
+  .form-card{
+    margin-top:26px;background:var(--glass-strong);border:1px solid var(--hairline);
+    border-radius:26px;padding:28px 24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    box-shadow:0 30px 60px rgba(0,0,0,.45);
+  }
+  .form-card h2{text-align:center}
+  .form-card .section-sub{text-align:center}
+  label{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;margin:18px 0 8px;color:var(--cream)}
+  label:first-of-type{margin-top:4px}
+  input[type="text"],input[type="email"]{
+    width:100%;border-radius:9999px;border:1px solid var(--hairline);
+    background:rgba(255,255,255,.055);color:var(--cream);
+    padding:14px 20px;font-size:16px;font-family:inherit;outline:none;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  input::placeholder{color:var(--faint)}
+  input:focus{border-color:rgba(255,102,136,.65);box-shadow:0 0 0 4px rgba(255,102,136,.15)}
+  .platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .platform{
+    appearance:none;border:1px solid var(--hairline);background:rgba(255,255,255,.04);color:var(--cream);
+    border-radius:18px;padding:14px 8px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;
+    transition:border-color .2s, background .2s, box-shadow .2s;text-align:center;
+  }
+  .platform small{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+  .platform[aria-pressed="true"]{
+    border-color:rgba(255,102,136,.8);background:rgba(255,102,136,.12);
+    box-shadow:0 0 0 1px rgba(255,102,136,.5), 0 10px 24px rgba(194,24,69,.25);
+  }
+  .hint{font-size:13.5px;color:var(--accent);min-height:21px;margin-top:10px}
+  .hp{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0}
+  button.submit{
+    width:100%;margin-top:24px;border:none;cursor:pointer;border-radius:9999px;
+    padding:16px 20px;font-family:inherit;font-size:16.5px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    box-shadow:0 14px 30px rgba(194,24,69,.4);
+    transition:transform .15s, box-shadow .2s, opacity .2s;
+  }
+  button.submit:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(194,24,69,.5)}
+  button.submit:active{transform:translateY(0)}
+  button.submit:disabled{opacity:.6;cursor:wait;transform:none}
+  .error{display:none;margin-top:14px;font-size:14px;color:#ffb3c2;text-align:center}
+  .success{display:none;text-align:center;padding:18px 6px 8px}
+  .success .ring{
+    width:64px;height:64px;margin:0 auto 16px;border-radius:50%;
+    border:1px solid rgba(255,102,136,.5);background:rgba(255,102,136,.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-bottom:8px}
+  .success p{color:var(--muted);font-size:15px;max-width:420px;margin:0 auto}
+  footer{margin-top:54px;text-align:center;color:var(--faint);font-size:13px}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hairline)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="https://ourlovelyfe.com">
+      <img src="https://ourlovelyfe.com/logo.webp" alt="OurLoveLyfe logo" />
+      <span>OurLoveLyfe</span>
+    </a>
+  </header>
+
+  <div class="hero">
+    <span class="eyebrow">App testing - early access</span>
+    <h1>Be first inside <em>OurLoveLyfe.</em></h1>
+    <p class="lede">OurLoveLyfe is leaving the browser. The iPhone and Android apps are almost ready, and a small group of testers gets in before anyone else. Read how it works, then join the list.</p>
+  </div>
+
+  <section>
+    <h2>What you get</h2>
+    <p class="section-sub">Testing is free, takes minutes to join, and you can leave whenever you like.</p>
+    <div class="cards three">
+      <div class="card">
+        <h3><span class="dot"></span>Early access</h3>
+        <p>The full app on your phone - LoveLine, the games, your shared calendar, partner perks - before the public launch.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>A direct line</h3>
+        <p>Your feedback goes straight to the founder. What testers love stays. What annoys them gets fixed before launch.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot"></span>Free means free</h3>
+        <p>No cost, no card, nothing to buy. The app is free for everyone until December 31, 2026, and testers pay nothing, ever, for helping.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How invites work</h2>
+    <p class="section-sub">Each store handles testing its own way. Here is exactly what happens on your phone.</p>
+    <div class="cards two">
+      <div class="card">
+        <h3>Android</h3>
+        <ol>
+          <li>Sign up below with the email address on your Google account.</li>
+          <li>We add you to the Play Store test and email your private invite link.</li>
+          <li>Install from the Play Store, then keep and use the app through the 14-day test window. Google only counts testers who install from the Store and stay in.</li>
+        </ol>
+        <p class="status">Android invites open as soon as Google finishes reviewing the developer account. Sign up now to hold your spot.</p>
+      </div>
+      <div class="card">
+        <h3>iPhone</h3>
+        <ol>
+          <li>Sign up below with your Apple ID email address.</li>
+          <li>Your invite arrives through TestFlight, Apple's free testing app.</li>
+          <li>Tap the invite, install, and you are in. Updates arrive in TestFlight as new test builds land.</li>
+        </ol>
+        <p class="status">iPhone invites open once the Apple Developer enrollment is complete. Sign up now and you are first in line.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Before you share your email</h2>
+    <div class="card">
+      <p>Your email address is used for one thing only: sending your testing invite. It is never added to a marketing list, never shared, never sold. Want out? Uninstall the app, reply to any invite email, and we remove you from the tester list. That is the whole policy.</p>
+    </div>
+  </section>
+
+  <div class="form-card" id="join">
+    <form id="signup" novalidate>
+      <h2>Join the tester list</h2>
+      <p class="section-sub">Thirty seconds. Your invite follows the moment your platform opens.</p>
+
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="name" placeholder="Alex" autocomplete="name" required />
+
+      <label>Which phone will you test on?</label>
+      <div class="platforms" role="group" aria-label="Platform">
+        <button type="button" class="platform" data-platform="android" aria-pressed="true">Android<small>Play Store test</small></button>
+        <button type="button" class="platform" data-platform="ios" aria-pressed="false">iPhone<small>TestFlight</small></button>
+        <button type="button" class="platform" data-platform="both" aria-pressed="false">Both<small>Two invites</small></button>
+      </div>
+
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+      <p class="hint" id="emailHint">Use the email signed into the Play Store on your phone. Google ties your invite to that exact account.</p>
+
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <button type="submit" class="submit" id="submitBtn">Join the tester list</button>
+      <p class="error" id="formError">Something went wrong sending that. Check your connection and try again.</p>
+    </form>
+
+    <div class="success" id="success">
+      <div class="ring">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="#ff6688" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>You are on the list.</h3>
+      <p id="successText">Watch your inbox. Your invite lands the moment your platform opens, and Android goes first.</p>
+    </div>
+  </div>
+
+  <p class="fineprint">Already use OurLoveLyfe on the web? Your account, partner link and everything in it carry straight into the app. Just sign in with the same email.</p>
+
+  <footer>
+    <p>OurLoveLyfe - a home for lovers. <a href="https://ourlovelyfe.com">ourlovelyfe.com</a></p>
+  </footer>
+</div>
+
+<script>
+  var SUPABASE_URL = "https://gjlvuvqpscxbsmkqhukw.supabase.co";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdqbHZ1dnFwc2N4YnNta3FodWt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3MTMwNTAsImV4cCI6MjEwNjI4OTA1MH0.Os85psRnqXOAF0Fn3KQ8Jft00cgYpNYfneQQ4ZlqLKA";
+  var platform = "android";
+  var hints = {
+    android: "Use the email signed into the Play Store on your phone. Google ties your invite to that exact account.",
+    ios: "Use your Apple ID email address. TestFlight sends your invite there.",
+    both: "If your Google and Apple emails are different, sign up once with each address so both invites reach you."
+  };
+  var successByPlatform = {
+    android: "Watch your inbox. When the Play Store test opens we will add this Google account and email your private invite link.",
+    ios: "Watch your inbox. The moment iPhone testing opens, your TestFlight invite goes to this Apple ID email.",
+    both: "Watch your inbox. Android opens first, and your TestFlight invite follows when iPhone testing opens."
+  };
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".platform"));
+  var hintEl = document.getElementById("emailHint");
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      platform = btn.getAttribute("data-platform");
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      hintEl.textContent = hints[platform];
+    });
+  });
+
+  var form = document.getElementById("signup");
+  var errorEl = document.getElementById("formError");
+  var submitBtn = document.getElementById("submitBtn");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    errorEl.style.display = "none";
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    if (!name || !email || email.indexOf("@") < 1 || email.indexOf(".") < 0) {
+      errorEl.textContent = "Add your name and a valid email address, then try again.";
+      errorEl.style.display = "block";
+      return;
+    }
+    if (form.elements["website"].value) { showSuccess(); return; }
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Joining...";
+    fetch(SUPABASE_URL + "/rest/v1/app_testers", {
+      method: "POST",
+      headers: {
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({ name: name, email: email, platform: platform })
+    }).then(function (res) {
+      if (!res.ok) throw new Error("insert failed");
+      showSuccess();
+    }).catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Join the tester list";
+      errorEl.textContent = "Something went wrong sending that. Check your connection and try again.";
+      errorEl.style.display = "block";
+    });
+  });
+  function showSuccess() {
+    document.getElementById("successText").textContent = successByPlatform[platform];
+    form.style.display = "none";
+    document.getElementById("success").style.display = "block";
+  }
+</script>
+</body>
+</html>
