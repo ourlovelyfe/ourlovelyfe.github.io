@@ -48,8 +48,8 @@
   .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 20px 72px}
   header{padding:34px 0 8px;text-align:center}
   .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream)}
-  .brand img{width:44px;height:44px;border-radius:12px}
-  .brand span{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;letter-spacing:.01em}
+  .brand img.mark{width:44px;height:44px;border-radius:12px}
+  .brand img.wordmark{height:37px;width:auto}
   .hero{text-align:center;padding:38px 0 10px}
   .eyebrow{
     display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
@@ -127,6 +127,96 @@
   }
   .success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-bottom:8px}
   .success p{color:var(--muted);font-size:15px;max-width:420px;margin:0 auto}
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  /* Hero entrance */
+  .hero>*{animation:rise .9s cubic-bezier(.22,1,.36,1) both}
+  .hero>*:nth-child(2){animation-delay:.08s}
+  .hero>*:nth-child(3){animation-delay:.16s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  /* Phone mockups */
+  .peek{margin-top:46px}
+  .peek-head{text-align:center}
+  .phones{
+    position:relative;left:50%;transform:translateX(-50%);
+    width:min(940px,calc(100vw - 24px));
+    display:flex;justify-content:center;align-items:flex-start;gap:26px;
+    margin-top:30px;padding:6px 4px 10px;
+  }
+  .phone-slot{flex:none}
+  .phone{
+    --rot:0deg;
+    width:216px;aspect-ratio:9/18.6;border-radius:40px;padding:9px;
+    background:linear-gradient(160deg,#241c2e,#120d18);
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 34px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12);
+    transform:rotate(var(--rot));
+  }
+  .phone.tilt-l{--rot:-6deg;margin-top:26px}
+  .phone.tilt-r{--rot:6deg;margin-top:26px}
+  .phone.hero-phone{animation:bob 7s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .screen{
+    height:100%;border-radius:32px;overflow:hidden;position:relative;
+    background:linear-gradient(180deg,#171019,#0e0a13);
+    display:flex;flex-direction:column;padding:14px 13px 13px;
+  }
+  .notch{width:74px;height:19px;border-radius:9999px;background:#000;margin:0 auto 10px;flex:none}
+  .m-bar{display:flex;align-items:center;gap:7px;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:11px}
+  .m-bar img{width:19px;height:19px;border-radius:6px}
+  .m-bar .m-bell{margin-left:auto;width:15px;height:15px;border:1.6px solid var(--faint);border-radius:50%}
+  .m-post{background:rgba(255,255,255,.05);border:1px solid var(--hairline);border-radius:18px;padding:11px}
+  .m-who{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .m-avatar{width:27px;height:27px;border-radius:50%;flex:none;background:conic-gradient(from 210deg,#ff6688,#c21845,#ffb3c2,#ff6688)}
+  .m-name{font-size:11.5px;font-weight:600;line-height:1.25}
+  .m-sub{font-size:9.5px;color:var(--faint)}
+  .m-img{
+    height:128px;border-radius:13px;position:relative;overflow:hidden;
+    background:linear-gradient(165deg,#3d1430 0%,#7a1f3d 42%,#c21845 68%,#ff8a5c 100%);
+  }
+  .m-img::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(120px 70px at 78% 16%,rgba(255,214,170,.75),transparent 70%);
+  }
+  .m-img img{position:absolute;right:10px;bottom:8px;width:30px;height:30px;opacity:.9;z-index:1}
+  .m-caption{font-size:11px;color:var(--muted);margin-top:9px;line-height:1.45}
+  .m-actions{display:flex;gap:13px;margin-top:9px;align-items:center}
+  .m-actions svg{width:16px;height:16px}
+  .m-actions .m-count{font-size:10px;color:var(--faint);margin-left:-9px}
+  .m-chiprow{display:flex;gap:6px;margin-top:11px}
+  .m-chip{font-size:9.5px;color:var(--muted);border:1px solid var(--hairline);border-radius:9999px;padding:4px 9px;background:rgba(255,255,255,.04)}
+  .m-qcard{
+    flex:1;border-radius:20px;padding:16px 14px;display:flex;flex-direction:column;
+    background:linear-gradient(165deg,rgba(255,102,136,.20),rgba(194,24,69,.10) 55%,rgba(255,255,255,.04));
+    border:1px solid rgba(255,102,136,.30);
+  }
+  .m-qtag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .m-q{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;line-height:1.25;margin:10px 0 14px}
+  .m-opt{border:1px solid var(--hairline);background:rgba(12,10,16,.45);border-radius:9999px;padding:8px 12px;font-size:11px;margin-bottom:8px;color:var(--cream)}
+  .m-opt.hot{border-color:rgba(255,102,136,.75);background:rgba(255,102,136,.16)}
+  .m-dots{display:flex;gap:5px;justify-content:center;margin-top:auto}
+  .m-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22)}
+  .m-dots i.on{background:var(--accent)}
+  .m-flip{font-size:9.5px;color:var(--faint);text-align:center;margin-top:9px}
+  .m-thread{display:flex;flex-direction:column;gap:7px;flex:1}
+  .m-bubble{max-width:82%;font-size:11px;line-height:1.45;padding:8px 11px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.05);align-self:flex-start;border-bottom-left-radius:5px}
+  .m-bubble.me{align-self:flex-end;background:linear-gradient(135deg,rgba(255,102,136,.85),rgba(194,24,69,.85));border:none;border-bottom-right-radius:5px;border-bottom-left-radius:16px;color:#fff}
+  .m-react{align-self:flex-start;margin:-3px 0 2px 8px;background:#241725;border:1px solid var(--hairline);border-radius:9999px;padding:2px 7px;font-size:10px;display:flex;gap:4px;align-items:center}
+  .m-react svg{width:11px;height:11px}
+  .m-input{margin-top:auto;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.055);border:1px solid var(--hairline);border-radius:9999px;padding:8px 13px;font-size:11px;color:var(--faint)}
+  .m-input .m-plus{margin-left:auto;width:19px;height:19px;border-radius:50%;background:rgba(255,102,136,.25);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1}
+  .peek-note{text-align:center;color:var(--faint);font-size:13px;margin-top:16px}
+  @media(max-width:760px){
+    .phones{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 14px 16px;gap:18px}
+    .phone-slot{scroll-snap-align:center}
+    .phone{--rot:0deg !important;margin-top:0 !important;width:202px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .hero>*{animation:none}
+    .phone.hero-phone{animation:none}
+  }
   footer{margin-top:54px;text-align:center;color:var(--faint);font-size:13px}
   footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hairline)}
 </style>
@@ -135,8 +225,8 @@
 <div class="wrap">
   <header>
     <a class="brand" href="https://ourlovelyfe.com">
-      <img src="https://ourlovelyfe.com/logo.webp" alt="OurLoveLyfe logo" />
-      <span>OurLoveLyfe</span>
+      <img class="mark" src="https://ourlovelyfe.com/logo.webp" alt="OurLoveLyfe heart logo" />
+      <img class="wordmark" src="https://ourlovelyfe.com/wordmark.png" alt="OurLoveLyfe" />
     </a>
   </header>
 
@@ -146,7 +236,71 @@
     <p class="lede">OurLoveLyfe is leaving the browser. The iPhone and Android apps are almost ready, and a small group of testers gets in before anyone else. Read how it works, then join the list.</p>
   </div>
 
-  <section>
+  <div class="peek">
+    <div class="peek-head reveal">
+      <h2>A peek inside</h2>
+      <p class="section-sub" style="margin-bottom:0">The same OurLoveLyfe you know, native on your phone.</p>
+    </div>
+    <div class="phones">
+      <div class="phone-slot reveal" style="--d:.05s">
+        <div class="phone tilt-l">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="m-bar"><img src="https://ourlovelyfe.com/logo.webp" alt="" />LoveLine<span class="m-bell"></span></div>
+            <div class="m-post">
+              <div class="m-who">
+                <span class="m-avatar"></span>
+                <span><span class="m-name">Maya &amp; Chris</span><br /><span class="m-sub">2h - Golden hour</span></span>
+              </div>
+              <div class="m-img"><img src="https://ourlovelyfe.com/logo.webp" alt="" /></div>
+              <p class="m-caption">Golden hour with my favourite person. Some views never get old.</p>
+              <div class="m-actions">
+                <svg viewBox="0 0 24 24" fill="#ff6688" aria-hidden="true"><path d="M12 21s-7.5-4.9-9.8-9.2C.6 8.6 2.4 5 5.7 5c1.9 0 3.4 1 4.3 2.4h4c.9-1.4 2.4-2.4 4.3-2.4 3.3 0 5.1 3.6 3.5 6.8C19.5 16.1 12 21 12 21z" transform="scale(.92) translate(1,0)"/></svg><span class="m-count">24</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(251,244,236,.7)" stroke-width="1.8" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12z"/></svg><span class="m-count">6</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(251,244,236,.7)" stroke-width="1.8" aria-hidden="true"><path d="M14 5l7 7-7 7v-4C7 15 4 16.5 2 20c0-6 3-11 12-12V5z"/></svg>
+              </div>
+            </div>
+            <div class="m-chiprow"><span class="m-chip">Stories</span><span class="m-chip">Date ideas</span><span class="m-chip">Near you</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-slot reveal" style="--d:.16s">
+        <div class="phone hero-phone">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="m-bar"><img src="https://ourlovelyfe.com/logo.webp" alt="" />Deep Deck<span class="m-bell"></span></div>
+            <div class="m-qcard">
+              <span class="m-qtag">Question 12 of 30</span>
+              <p class="m-q">When did you first know this was different?</p>
+              <div class="m-opt hot">The very first date</div>
+              <div class="m-opt">It crept up on me</div>
+              <div class="m-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+              <p class="m-flip">Answers reveal together - no peeking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-slot reveal" style="--d:.27s">
+        <div class="phone tilt-r">
+          <div class="screen">
+            <div class="notch"></div>
+            <div class="m-bar"><img src="https://ourlovelyfe.com/logo.webp" alt="" />Convos<span class="m-bell"></span></div>
+            <div class="m-thread">
+              <div class="m-bubble">movie night friday? your pick this time</div>
+              <div class="m-bubble me">already picked. and the snacks</div>
+              <div class="m-react"><svg viewBox="0 0 24 24" fill="#ff6688" aria-hidden="true"><path d="M12 21s-7.5-4.9-9.8-9.2C.6 8.6 2.4 5 5.7 5c1.9 0 3.4 1 4.3 2.4h4c.9-1.4 2.4-2.4 4.3-2.4 3.3 0 5.1 3.6 3.5 6.8C19.5 16.1 12 21 12 21z" transform="scale(.92) translate(1,0)"/></svg>2</div>
+              <div class="m-bubble">you know me too well</div>
+              <div class="m-bubble me">that is kind of the whole point</div>
+            </div>
+            <div class="m-input">Message...<span class="m-plus">+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="peek-note reveal">LoveLine, the games, your calendar and chats - all of it, in your pocket.</p>
+  </div>
+
+  <section class="reveal">
     <h2>What you get</h2>
     <p class="section-sub">Testing is free, takes minutes to join, and you can leave whenever you like.</p>
     <div class="cards three">
@@ -165,7 +319,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>How invites work</h2>
     <p class="section-sub">Each store handles testing its own way. Here is exactly what happens on your phone.</p>
     <div class="cards two">
@@ -190,14 +344,14 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>Before you share your email</h2>
     <div class="card">
       <p>Your email address is used for one thing only: sending your testing invite. It is never added to a marketing list, never shared, never sold. Want out? Uninstall the app, reply to any invite email, and we remove you from the tester list. That is the whole policy.</p>
     </div>
   </section>
 
-  <div class="form-card" id="join">
+  <div class="form-card reveal" id="join">
     <form id="signup" novalidate>
       <h2>Join the tester list</h2>
       <p class="section-sub">Thirty seconds. Your invite follows the moment your platform opens.</p>
@@ -302,6 +456,27 @@
     form.style.display = "none";
     document.getElementById("success").style.display = "block";
   }
+</script>
+<script>
+  (function () {
+    var els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      els.forEach(function (el) { el.classList.add("in"); });
+    }, 2500);
+  })();
 </script>
 </body>
 </html>
