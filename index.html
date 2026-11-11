@@ -217,6 +217,45 @@
     .hero>*{animation:none}
     .phone.hero-phone{animation:none}
   }
+  /* Voice testimonials */
+  .voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:6px}
+  .voice-card{
+    background:linear-gradient(165deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
+    border:1px solid var(--hairline);border-radius:22px;padding:18px;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+  .v-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .v-avatar{
+    width:42px;height:42px;border-radius:50%;flex:none;
+    background:conic-gradient(from 210deg,#ff6688,#c21845,#ffb3c2,#ff6688);
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;
+  }
+  .v-avatar svg{width:19px;height:19px}
+  .v-name{font-weight:700;font-size:15.5px}
+  .v-role{color:var(--faint);font-size:12.5px}
+  .player{display:flex;align-items:center;gap:11px;background:rgba(10,8,14,.5);border:1px solid var(--hairline);border-radius:9999px;padding:7px 12px 7px 7px}
+  .v-play{
+    width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--deep));color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(194,24,69,.38);
+    transition:transform .15s ease, opacity .2s ease;
+  }
+  .v-play:active{transform:scale(.94)}
+  .v-play:disabled{opacity:.45;cursor:default;box-shadow:none}
+  .v-play svg{width:17px;height:17px}
+  .wave{flex:1;display:flex;align-items:center;gap:2px;height:34px;cursor:pointer;min-width:0}
+  .wave i{flex:1;min-width:2px;border-radius:2px;background:rgba(255,255,255,.18);transition:background .15s}
+  .wave i.on{background:var(--accent)}
+  .wave.flat{cursor:default}
+  .v-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;min-width:32px;text-align:right}
+  .v-speed{
+    flex:none;border:1px solid var(--hairline);background:rgba(255,255,255,.05);color:var(--muted);
+    font-size:11.5px;font-weight:700;border-radius:9999px;padding:5px 9px;cursor:pointer;font-family:inherit;
+  }
+  .v-speed:disabled{opacity:.4;cursor:default}
+  .v-note{color:var(--faint);font-size:13px;margin-top:12px}
   footer{margin-top:54px;text-align:center;color:var(--faint);font-size:13px}
   footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hairline)}
 </style>
@@ -299,6 +338,70 @@
     </div>
     <p class="peek-note reveal">LoveLine, the games, your calendar and chats - all of it, in your pocket.</p>
   </div>
+
+  <section class="reveal">
+    <h2>Loved from day one</h2>
+    <p class="section-sub">Real voice notes from the people who have been testing OurLoveLyfe since the very first builds - in their own words, in their own voices.</p>
+    <div class="voice-grid">
+      <div class="voice-card reveal" style="--d:.05s">
+        <div class="v-top">
+          <span class="v-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+          <div>
+            <p class="v-name">Day-one tester</p>
+            <p class="v-role">Testing since the very first build</p>
+          </div>
+        </div>
+        <div class="player">
+          <button class="v-play" type="button" aria-label="Play voice note" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
+          </button>
+          <div class="wave flat"></div>
+          <span class="v-time">--:--</span>
+          <button class="v-speed" type="button" disabled>1x</button>
+        </div>
+        <p class="v-note">Their voice note lands here today.</p>
+        <audio preload="metadata"></audio>
+      </div>
+      <div class="voice-card reveal" style="--d:.15s">
+        <div class="v-top">
+          <span class="v-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+          <div>
+            <p class="v-name">Day-one tester</p>
+            <p class="v-role">Testing since the very first build</p>
+          </div>
+        </div>
+        <div class="player">
+          <button class="v-play" type="button" aria-label="Play voice note" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
+          </button>
+          <div class="wave flat"></div>
+          <span class="v-time">--:--</span>
+          <button class="v-speed" type="button" disabled>1x</button>
+        </div>
+        <p class="v-note">Their voice note lands here today.</p>
+        <audio preload="metadata"></audio>
+      </div>
+      <div class="voice-card reveal" style="--d:.25s">
+        <div class="v-top">
+          <span class="v-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+          <div>
+            <p class="v-name">Day-one tester</p>
+            <p class="v-role">Testing since the very first build</p>
+          </div>
+        </div>
+        <div class="player">
+          <button class="v-play" type="button" aria-label="Play voice note" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>
+          </button>
+          <div class="wave flat"></div>
+          <span class="v-time">--:--</span>
+          <button class="v-speed" type="button" disabled>1x</button>
+        </div>
+        <p class="v-note">Their voice note lands here today.</p>
+        <audio preload="metadata"></audio>
+      </div>
+    </div>
+  </section>
 
   <section class="reveal">
     <h2>What you get</h2>
@@ -476,6 +579,91 @@
     setTimeout(function () {
       els.forEach(function (el) { el.classList.add("in"); });
     }, 2500);
+  })();
+</script>
+<script>
+  (function () {
+    var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg>';
+    var PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+    var speeds = [1, 1.5, 2];
+    var audios = [];
+
+    function fmt(s) {
+      if (!isFinite(s) || s == null) return "--:--";
+      s = Math.max(0, Math.round(s));
+      return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2);
+    }
+    function seedRand(seed) {
+      var t = seed + 1;
+      return function () {
+        t = (t * 1103515245 + 12345) % 2147483648;
+        return t / 2147483648;
+      };
+    }
+
+    document.querySelectorAll(".voice-card").forEach(function (card, ci) {
+      var wave = card.querySelector(".wave");
+      var rand = seedRand(7 + ci * 13);
+      var bars = [];
+      for (var i = 0; i < 38; i++) {
+        var b = document.createElement("i");
+        var h = 22 + Math.round(Math.abs(Math.sin(i * 0.55 + ci)) * 46 + rand() * 30);
+        b.style.height = Math.min(96, h) + "%";
+        wave.appendChild(b);
+        bars.push(b);
+      }
+
+      var src = card.getAttribute("data-src");
+      if (!src) return;
+
+      var audio = card.querySelector("audio");
+      var playBtn = card.querySelector(".v-play");
+      var speedBtn = card.querySelector(".v-speed");
+      var timeEl = card.querySelector(".v-time");
+      audio.src = src;
+      audios.push(audio);
+      wave.classList.remove("flat");
+      playBtn.disabled = false;
+      speedBtn.disabled = false;
+
+      function paint() {
+        if (!audio.duration) return;
+        var upto = Math.floor((audio.currentTime / audio.duration) * bars.length);
+        bars.forEach(function (b, bi) { b.classList.toggle("on", bi < upto); });
+        timeEl.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
+      }
+      audio.addEventListener("loadedmetadata", function () { timeEl.textContent = fmt(audio.duration); });
+      audio.addEventListener("timeupdate", paint);
+      audio.addEventListener("ended", function () {
+        playBtn.innerHTML = PLAY;
+        audio.currentTime = 0;
+        paint();
+      });
+      playBtn.addEventListener("click", function () {
+        if (audio.paused) {
+          audios.forEach(function (a) { if (a !== audio) a.pause(); });
+          audio.play();
+          playBtn.innerHTML = PAUSE;
+        } else {
+          audio.pause();
+          playBtn.innerHTML = PLAY;
+        }
+      });
+      audio.addEventListener("pause", function () { playBtn.innerHTML = PLAY; });
+      audio.addEventListener("play", function () { playBtn.innerHTML = PAUSE; });
+      wave.addEventListener("click", function (e) {
+        if (!audio.duration) return;
+        var r = wave.getBoundingClientRect();
+        audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+        paint();
+      });
+      var si = 0;
+      speedBtn.addEventListener("click", function () {
+        si = (si + 1) % speeds.length;
+        audio.playbackRate = speeds[si];
+        speedBtn.textContent = speeds[si] + "x";
+      });
+    });
   })();
 </script>
 </body>
